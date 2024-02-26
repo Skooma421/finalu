@@ -137,7 +137,7 @@ namespace finalu
             decimal newBal = currentBal - withdrawl;
 
             File.WriteAllText (accountFile,newBal.ToString());
-            Console.WriteLine("Withdrawl finished.");
+            Console.WriteLine("Withdrawl finished."); 
         }
     }
 }
