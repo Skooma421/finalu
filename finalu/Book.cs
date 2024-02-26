@@ -20,7 +20,7 @@ namespace finalu
             Author = author;
             ReleaseDate = releaseDate;
         }
-
+        //konstruqtori
         public override string ToString()
         {
             return $"Title: {Title}\nAuthor: {Author}\nPublication Year: {ReleaseDate}";
@@ -31,24 +31,24 @@ namespace finalu
     {
         private List<Book> books = new List<Book>();
 
-        public void AddBook(string title, string author, string releaseDate)
+        public void AddBook(string title, string author, string releaseDate)//wignis damateba
         {
             Book newBook = new Book(title, author, releaseDate);
             books.Add(newBook);
         }
-        public void ShowBooks()
+        public void ShowBooks()//wignis siis chveneba
         {
-            Console.WriteLine("Book List");
+            Console.WriteLine("Book List");//wignebis chamonatvalis chveneba
             foreach (Book book in books)
             {
                 Console.WriteLine(book);
             }
         }
-        public Book SearchByBook(string title)
+        public Book SearchByBook(string title)//dzieba
         {
             foreach (var book in books)
             {
-                if (book.Title == title)
+                if (book.Title == title)//tu saxeli sheefereba vprintavt saxels
                 {
                     return book;
                 }
