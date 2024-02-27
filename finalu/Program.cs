@@ -13,7 +13,7 @@ namespace finalu
     internal class Program
     {
         static void Main(string[] args)
-        { 
+        {   
             //studentebi
             StudentManager manager = new StudentManager();
             int menu;
@@ -61,13 +61,13 @@ namespace finalu
                         break;
                 }
             } while (menu != 5);
-
+            
 
             /*
             bookManager manager = new bookManager();
             manager.AddBook("Catcher in the Rye", "J.D. Salinger", "July 16, 1951");
             manager.ShowBooks();
-            string searchTitle = "1951";
+            string searchTitle = "Catcher in the Rye";
             Book foundBook = manager.SearchByBook(searchTitle);
             if (foundBook != null)
             {
@@ -78,6 +78,7 @@ namespace finalu
                 Console.WriteLine($"Book with title '{searchTitle}' not found.");//wignis ver povnis shemtxveva
             }
             */
+            /*
             //martivi kalkulatori switchit
             Console.WriteLine("Enter your number:");//users sheyavs monacemebi
             int num = int.Parse(Console.ReadLine());
@@ -112,7 +113,8 @@ namespace finalu
                 default:
                     Console.WriteLine("Invalid operator");
                     break;
-            }
+            }*/
+            
             //hangman
             string[] words = { "hello", "goodbye", "horse", "car", "pillow" };
             Random random1 = new Random();
@@ -163,6 +165,8 @@ namespace finalu
             {
                 Console.WriteLine("You ran out of attempts. The word was: " + wordToGuess);
             }
+            
+            
             //ricxvis gamosacnobi tamashi
             Random random = new Random();//viyenebt rands rom davagenerirot ertidan atis chatvlit ricxvebi
             int Gnum = random.Next(1, 11);
@@ -182,7 +186,8 @@ namespace finalu
             }
             while (guess!= Gnum);
             Console.WriteLine($"You guessed the number {Gnum} correctly");
-
+            
+            
             //ATM aplikacia
             //vqmni direqtorias rom shevinaxo aqauntebis filebi desktopze
             String directoryPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + @"\ATM";

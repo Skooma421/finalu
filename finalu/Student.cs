@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Forms;
+
 
 namespace finalu
 {
-    internal class Student
+    public class Student
     {
         public string Name { get; set; }
         public int RollNumber { get; set; }
@@ -30,12 +31,36 @@ namespace finalu
     {
         private List<Student> students = new List<Student>();//studentebis listi
         //studentis damatebis metodi
+        private string directoryPath;
+
+        public StudentManager()
+        {
+            directoryPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + @"\Students";
+            Directory.CreateDirectory(directoryPath);
+        }
         public void AddStudent(string name, int rollNumber, char grade)
         {
-            Student newStudent = new Student(name, rollNumber, grade);//vqmnit axal obieqts
-            students.Add(newStudent);//vamatebt
+            if (students.Any(s => s.RollNumber == rollNumber))
+            {
+                Console.WriteLine("A student with the same roll number already exists");
+                return;
+            }
+
+            Student newStudent = new Student(name, rollNumber, grade);
+            students.Add(newStudent);
+            SaveStudent(newStudent);
         }
         //metodi rom vnaxot yvela studenti
+        private void SaveStudent(Student student)
+        {
+            string studentFilePath = Path.Combine(directoryPath, $"{student.RollNumber}.txt");
+            using (StreamWriter writer = new StreamWriter(studentFilePath))
+            {
+                writer.WriteLine($"Name: {student.Name}");
+                writer.WriteLine($"Roll Number: {student.RollNumber}");
+                writer.WriteLine($"Grade: {student.Grade}");
+            }
+        }
         public void viewAllStud()
         {
             foreach (Student student in students)//forichit vaitereitebt da vichert yvela students
@@ -58,13 +83,13 @@ namespace finalu
             }
             if (!found)//tu ar iqna studenti napovni
             {
-                Console.WriteLine("student not found.");
+                Console.WriteLine("Student not found");
             }
         }
         //qulis ganaxlebis metodi
         public void UpdateGrade(int rollNumber, char newGrade)
         {
-            foreach(var student in students)
+            foreach (var student in students)
             {
                 if (student.RollNumber == rollNumber)//vamowmebt damtxvevadobas
                 {
